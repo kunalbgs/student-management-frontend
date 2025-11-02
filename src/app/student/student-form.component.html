@@ -1,0 +1,7 @@
+<form (ngSubmit)="save()">
+  <input [(ngModel)]="student.rollNumber" name="rollNumber" placeholder="Roll Number" required />
+  <input [(ngModel)]="student.name" name="name" placeholder="Name" required />
+  <input [(ngModel)]="student.email" name="email" placeholder="Email" required />
+  <input [(ngModel)]="student.dateOfBirth" name="dateOfBirth" type="date" required />
+  <button type="submit">Add Student</button>
+</form>
