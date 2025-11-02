@@ -1,8 +1,10 @@
 <h1>Student Management System</h1>
 
-<nav>
-  <a routerLink="/">Add Student</a> |
-  <a routerLink="/list">View Students</a>
+<nav class="navbar">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">➕ Add Student</a>
+  <a routerLink="/list" routerLinkActive="active">📋 View All Students</a>
+  <a routerLink="/list" routerLinkActive="active">📝 Update Student</a>
+  <a routerLink="/list" routerLinkActive="active">🗑️ Delete Student</a>
 </nav>
 
 <router-outlet></router-outlet>

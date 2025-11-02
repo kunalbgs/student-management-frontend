@@ -1,7 +1,21 @@
-<form (ngSubmit)="save()">
-  <input [(ngModel)]="student.rollNumber" name="rollNumber" placeholder="Roll Number" required />
-  <input [(ngModel)]="student.name" name="name" placeholder="Name" required />
-  <input [(ngModel)]="student.email" name="email" placeholder="Email" required />
-  <input [(ngModel)]="student.dateOfBirth" name="dateOfBirth" type="date" required />
-  <button type="submit">Add Student</button>
+<h2>{{ isEditMode ? 'Edit Student' : 'Add Student' }}</h2>
+
+<form #studentForm="ngForm" (ngSubmit)="save(studentForm)">
+  <input [(ngModel)]="student.rollNumber" name="rollNumber" placeholder="Roll Number" required pattern="^[0-9]+$"
+         type="text" (keypress)="allowOnlyDigits($event)" #rollField="ngModel"/>
+  <div *ngIf="rollField.invalid && rollField.touched" class="error">Roll Number must contain only digits.</div>
+
+  <input [(ngModel)]="student.name" name="name" placeholder="Name" required pattern="^[a-zA-Z ]+$" type="text"
+         (keypress)="allowOnlyLetters($event)" #nameField="ngModel"/>
+  <div *ngIf="nameField.invalid && nameField.touched" class="error">Name must contain only letters.</div>
+
+  <input [(ngModel)]="student.email" name="email" placeholder="Email" required type="email" #emailField="ngModel"/>
+  <div *ngIf="emailField.invalid && emailField.touched" class="error">Valid email is required.</div>
+
+  <input [(ngModel)]="student.dateOfBirth" name="dateOfBirth" type="date" required #dobField="ngModel"/>
+  <div *ngIf="dobField.invalid && dobField.touched" class="error">Date of Birth is required.</div>
+
+  <div *ngIf="formError" class="error" style="margin-top: 10px;">Please enter all required fields correctly.</div>
+
+  <button type="submit">{{ isEditMode ? 'Update' : 'Add' }} Student</button>
 </form>

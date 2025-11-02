@@ -1,8 +1,29 @@
+<h2 style="text-align: center;">Student List</h2>
+
 <table>
+  <thead>
   <tr>
-    <th>Roll No</th><th>Name</th><th>Email</th><th>DOB</th>
+    <th>Roll No</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Date of Birth</th>
+    <th>Actions</th>
   </tr>
+  </thead>
+  <tbody>
   <tr *ngFor="let s of students">
-    <td>{{s.rollNumber}}</td><td>{{s.name}}</td><td>{{s.email}}</td><td>{{s.dateOfBirth}}</td>
+    <td>{{ s.rollNumber }}</td>
+    <td>{{ s.name }}</td>
+    <td>{{ s.email }}</td>
+    <td>{{ s.dateOfBirth }}</td>
+    <td>
+      <a [routerLink]="['/edit', s.id!]" class="action-btn edit">✏️ Edit</a>
+      <button (click)="deleteStudent(s.id!)" class="action-btn delete">🗑️ Delete</button>
+    </td>
   </tr>
+  </tbody>
 </table>
+
+<div *ngIf="students.length === 0" style="text-align: center; margin-top: 20px;">
+  No students found.
+</div>

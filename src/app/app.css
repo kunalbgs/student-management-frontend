@@ -1,19 +1,40 @@
+/* ✅ Remove flex from body — it breaks layout */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* ✅ Center heading */
 h1 {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
 }
 
-nav {
+/* ✅ Center navbar links */
+.navbar {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
-a {
+.navbar a {
   margin: 0 10px;
+  padding: 8px 16px;
   text-decoration: none;
   color: #007bff;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
 }
 
-a:hover {
-  text-decoration: underline;
+.navbar a:hover {
+  background-color: #e6f0ff;
+}
+
+.navbar a.active {
+  background-color: #007bff;
+  color: white;
 }

@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+// @ts-ignore
 import { App } from './app';
 
 describe('App', () => {
